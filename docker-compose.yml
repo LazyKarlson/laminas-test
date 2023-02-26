@@ -2,6 +2,21 @@ services:
   laminas:
     build: .
     ports:
-     - "8080:80"
+     - "80:80"
+    depends_on:
+      - pgsql 
     volumes:
      - .:/var/www
+
+  pgsql:
+    image: postgres:12
+    container_name: pgsql
+    restart: always
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_DB: ${DB_DATABASE}
+    ports:
+      - "5432:5432"   
