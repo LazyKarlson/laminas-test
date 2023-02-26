@@ -12,17 +12,11 @@
  * file.
  */
 
-return [
+return [    
     'db' => [
-        'driver' => getenv('DB_DRIVER'),
-        'hostname' => getenv('DB_HOSTNAME'),
-        'port' => getenv('DB_PORT'),
-        'database' => getenv('DB_DATABASE'),
+        'driver' => 'Pdo',
+        'dsn'    => 'pgsql:host=getenv('DB_HOST');port=getenv('DB_PORT');dbname=getenv('DB_DATABASE');',
         'user' => getenv('DB_USER'),
-        'password' => getenv('DB_PASSWORD'),
-        'charset' => getenv('DB_CHARSET'),
-        'options' => [
-            'buffer_results' => true,
-        ],
+        'password' => getenv('DB_PASS'),
     ]
 ];
